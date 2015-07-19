@@ -10,6 +10,6 @@ import cn.flaty.model.User;
 
 public interface UserMapper {
 	
-	@Select("select name,pwd from user;")
+//	@Select("select name,pwd from user;")
 	List<User> queryAll();
 }
