@@ -2,6 +2,8 @@ package cn.flaty.web.user;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,16 +18,13 @@ import cn.flaty.persitance.UserMapper;
 @RequestMapping("/users")
 public class UserController  {
 	
-	@Autowired
+	@Resource
 	private UserMapper userMapper;
 	
-	@Autowired
-	private TomcatPoolDataSourceProperties config;
 
 	
 	@RequestMapping("/index")
 	public List<User> home(){
-		System.out.println(config.getDriverClassName());
 		return userMapper.queryAll();
 	}
 

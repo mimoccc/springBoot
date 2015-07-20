@@ -4,7 +4,7 @@
 
 	<groupId>cn.flaty</groupId>
 	<artifactId>springBoot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>springBoot</name>
@@ -26,6 +26,9 @@
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
 		<jdk.version>1.7</jdk.version>
+
+		<!-- main class -->
+		<mainClass>cn.flaty.Application</mainClass>
 
 
 		<!-- apache commons -->
@@ -108,17 +111,17 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<exclusions>
-				 <exclusion>
+				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion> 
+				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		 <dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency> 
+		</dependency>
 
 
 
@@ -168,13 +171,57 @@
 	</dependencies>
 
 	<build>
+
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<compilerVersion>${jdk}</compilerVersion>
+				</configuration>
+			</plugin>
+
+			<!-- 排除项目配置文件 -->
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<mainClass>${mainClass}</mainClass>
+						</manifest>
+						<manifestEntries>
+							<Class-Path>../conf/</Class-Path>
+						</manifestEntries>
+					</archive>
+					<excludes>
+						<excludes>*.xml</excludes>
+						<excludes>*.properties</excludes>
+					</excludes>
+				</configuration>
+			</plugin>
+
+			<!-- 打包工具 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptors>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
+
 
 
 
