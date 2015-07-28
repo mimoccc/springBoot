@@ -1,10 +1,7 @@
 package cn.flaty.config.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
-import cn.flaty.Application;
 
 /**
  * tomcatDataSourcePool 配置
@@ -14,7 +11,6 @@ import cn.flaty.Application;
  */
 @Component
 @ConfigurationProperties(prefix = "TomcatPool.datasource", ignoreUnknownFields = false)
-@Profile(Application.PRODUCTION)
 public class TomcatPoolDataSourceProperties {
 	private String driverClassName;
 	private String url;

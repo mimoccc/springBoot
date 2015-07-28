@@ -46,10 +46,16 @@
 		<org.mybatis.mybatis>3.2.7</org.mybatis.mybatis>
 		<org.mybatis.mybatis-spring>1.2.2</org.mybatis.mybatis-spring>
 
-		<!-- jdbc -->
-		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+		<!-- mysql -->
+	   <jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
-		<jdbc.driver.version>5.1.21</jdbc.driver.version>
+		<jdbc.driver.version>5.1.21</jdbc.driver.version> 
+		
+		
+		<!-- h2 -->
+		<!-- <jdbc.driver.groupId>com.h2database</jdbc.driver.groupId>
+		<jdbc.driver.artifactId>h2</jdbc.driver.artifactId>
+		<jdbc.driver.version>1.4.186</jdbc.driver.version> -->
 
 
 		<!-- json -->
@@ -197,6 +203,9 @@
 						<excludes>*.xml</excludes>
 						<excludes>*.properties</excludes>
 					</excludes>
+					<includes>
+						<includes>logback.xml</includes>
+					</includes>
 				</configuration>
 			</plugin>
 

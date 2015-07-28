@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>[%level]%d{HH:mm:ss.SSS}[%thread -> %logger{40}] %msg%n
-			</pattern>
-		</encoder>
-	</appender>
-
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>	
 
 	<!--sql 打印在控制台 -->
 	<logger name="jdbc.sqltiming" level="INFO" addtivity="false"></logger>
@@ -16,7 +10,4 @@
 	<logger name="jdbc.resultset" level="OFF" addtivity="false"></logger>
 	<logger name="jdbc.connection" level="OFF" addtivity="false"></logger>
 
-	<root level="INFO">
-		<appender-ref ref="console" />
-	</root>
 </configuration>
