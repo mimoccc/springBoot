@@ -1,6 +1,7 @@
 ### 项目目录
  - maven 测试打包：mvn clean package -Ptest（默认打包）
- - maven 生产打包：mvn clean package -Pprod
+ - maven 生产打包：mvn clean package -Pprod  
+ 
 ### 项目目录
   开发环境启动是**src/test/java/../ApplicationDev.java**    
   
