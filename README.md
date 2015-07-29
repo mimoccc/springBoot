@@ -3,7 +3,8 @@
  - maven 生产打包：mvn clean package -Pprod
 ### 项目目录
 
- 开发环境启动是**src/test/java/../ApplicationDev.java**
+ 开发环境启动是**src/test/java/../ApplicationDev.java**  
+   
 	
 	├─bin -
 	│      package_prod.bat -> maven 生产打包
