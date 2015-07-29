@@ -2,10 +2,8 @@
  - maven 测试打包：mvn clean package -Ptest（默认打包）
  - maven 生产打包：mvn clean package -Pprod
 ### 项目目录
-
- 开发环境启动是**src/test/java/../ApplicationDev.java**  
-   
-	
+  开发环境启动是**src/test/java/../ApplicationDev.java**    
+  
 	├─bin -
 	│      package_prod.bat -> maven 生产打包
 	│      package_prod.sh  
@@ -40,7 +38,8 @@
 	│              logback-test.xml
 	│              
 	└─readme.md
-                     
+
+
 ### 打包目录说明
     
 	
