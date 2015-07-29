@@ -1,9 +1,9 @@
 package cn.flaty;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-
+import org.springframework.core.io.support.PropertiesLoaderUtils;
 
 /**
  * 
@@ -12,14 +12,21 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * 配置见 config目录
  * 
  * @author chenxingwang
- *
+ * 
  */
 @SpringBootApplication
 @EnableConfigurationProperties
 public class ApplicationDev {
-	
+
 	public static void main(String args[]) throws Exception {
-		SpringApplication.run(ApplicationDev.class);
+		SpringApplicationBuilder builder = new SpringApplicationBuilder(
+				ApplicationDev.class);
+
+		// 手动加载dev环境
+		builder.properties(
+				PropertiesLoaderUtils
+						.loadAllProperties("application_dev.properties"))
+				.build().run(args);
 	}
 
 }

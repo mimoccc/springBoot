@@ -13,7 +13,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @MapperScan("cn.flaty.persitance")
-public class DataSourceConfig {
+public class MybatisConfig {
 
 	@Autowired
 	private DataSource dataSource;

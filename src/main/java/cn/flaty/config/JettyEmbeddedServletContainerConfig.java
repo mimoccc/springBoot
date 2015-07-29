@@ -1,55 +1,37 @@
 package cn.flaty.config;
 
+import java.net.InetSocketAddress;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.embedded.jetty.JettyEmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.jetty.JettyServerCustomizer;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "server", ignoreUnknownFields = false)
 public class JettyEmbeddedServletContainerConfig {
-	private Integer maxThreads = 20;
-	private Integer minThreads = 10;
-	private Integer idleTimeout = 60000;
-	private String address = "0.0.0.0";
-	private String contextPath = "";
-	private Integer port = 8080;
-
-	public void setMaxThreads(Integer maxThreads) {
-		this.maxThreads = maxThreads;
-	}
-
-	public void setMinThreads(Integer minThreads) {
-		this.minThreads = minThreads;
-	}
-
-	public void setIdleTimeout(Integer idleTimeout) {
-		this.idleTimeout = idleTimeout;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public void setContextPath(String contextPath) {
-		this.contextPath = contextPath;
-	}
-
-	public void setPort(Integer port) {
-		this.port = port;
-	}
+	@Value("${jetty.server.maxThreads:20}")
+	private Integer maxThreads;
+	@Value("${jetty.server.minThreads:10}")
+	private Integer minThreads;
+	@Value("${jetty.server.idleTimeout:60000}")
+	private Integer idleTimeout;
+	@Value("${server.address:0.0.0.0}")
+	private String address;
+	@Value("${server.context-path:}")
+	private String contextPath;
+	@Value("${server.port:8080}")
+	private Integer port;
 
 	@Bean
 	public JettyEmbeddedServletContainerFactory getEmbeddedServletContainerFactory() {
-		// InetSocketAddress socketAddress = new InetSocketAddress(address,
-		// port);
+		InetSocketAddress socketAddress = new InetSocketAddress(address, port);
 		JettyEmbeddedServletContainerFactory factory = new JettyEmbeddedServletContainerFactory(
-				8888);
+				this.contextPath, port);
 
-		// factory.setAddress(socketAddress.getAddress());
+		factory.setAddress(socketAddress.getAddress());
 		factory.addServerCustomizers(new JettyServerCustomizer() {
 			@Override
 			public void customize(final Server server) {

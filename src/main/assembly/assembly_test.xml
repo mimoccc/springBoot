@@ -4,7 +4,7 @@
 	xsi:schemaLocation="
 	http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2
 	http://maven.apache.org/xsd/assembly-1.1.2.xsd">
-	<id>prod</id>
+	<id>test</id>
 	<formats>
 		<format>zip</format>
 	</formats>
@@ -17,10 +17,10 @@
 	<fileSets>
 		<fileSet>
 			<directory>src/main/resources</directory>
-			<outputDirectory>/conf</outputDirectory>
 			<excludes>
-				<exclude>application_test.properties</exclude>
+				<exclude>application.properties</exclude>
 			</excludes>
+			<outputDirectory>/conf</outputDirectory>
 		</fileSet>
 		<fileSet>
 			<outputDirectory>/</outputDirectory>
