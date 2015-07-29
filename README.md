@@ -1,4 +1,4 @@
-### 项目目录
+### maven
  - maven 测试打包：mvn clean package -Ptest（默认打包）
  - maven 生产打包：mvn clean package -Pprod  
  
